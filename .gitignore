@@ -1,0 +1,18 @@
+# Environments
+venv/
+.env
+
+__pycache__/
+*.pyc
+*.pyo
+
+*.swp
+.vscode/
+.idea/
+
+.DS_Store
+Thumbs.db
+
+# Project Specific
+unused_assets/
+playlists/* <-- Uncomment this if you want to ignore user-generated playlists

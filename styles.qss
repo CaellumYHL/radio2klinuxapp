@@ -1,0 +1,357 @@
+/* =====================================================
+   GOTHIC FLAC PLAYER — Qt Stylesheet
+   Dark gothic theme with amber accents
+   ===================================================== */
+
+/* === GLOBAL === */
+QWidget {
+    background-color: #0a0a0a;
+    color: #c0c0c0;
+    font-family: "Serif";
+    font-size: 13px;
+    selection-background-color: #d4a017;
+    selection-color: #0a0a0a;
+}
+
+/* === HEADER === */
+QFrame#header {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #141414, stop:1 #0a0a0a);
+    border-bottom: 1px solid #1a1a1a;
+}
+
+QLabel#headerTitle {
+    color: #d4a017;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    background: transparent;
+}
+
+/* === SIDEBAR === */
+QFrame#sidebar {
+    background: #0e0e0e;
+    border-right: 1px solid #1a1a1a;
+}
+
+QLabel#sectionLabel {
+    color: #7a7a7a;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    padding: 6px 4px 2px 4px;
+    background: transparent;
+}
+
+/* === PLAYLIST LIST === */
+QListWidget#playlistList {
+    background: #111111;
+    border: 1px solid #1e1e1e;
+    border-radius: 4px;
+    padding: 4px;
+    outline: none;
+}
+
+QListWidget#playlistList::item {
+    color: #b0b0b0;
+    padding: 6px 8px;
+    border-radius: 3px;
+    margin: 1px 0px;
+}
+
+QListWidget#playlistList::item:selected {
+    background: #1a1a1a;
+    color: #d4a017;
+    border-left: 2px solid #d4a017;
+}
+
+QListWidget#playlistList::item:hover {
+    background: #161616;
+    color: #e0e0e0;
+}
+
+/* === TRACK LIST === */
+QListWidget#trackList {
+    background: #0c0c0c;
+    border: 1px solid #1a1a1a;
+    border-radius: 4px;
+    padding: 2px;
+    outline: none;
+    font-size: 12px;
+}
+
+QListWidget#trackList::item {
+    color: #b4b4b4;
+    padding: 8px 10px;
+    border-bottom: 1px solid #131313;
+    border-radius: 0px;
+}
+
+QListWidget#trackList::item:selected {
+    background: #181818;
+    color: #d4a017;
+}
+
+QListWidget#trackList::item:hover {
+    background: #141414;
+    color: #e0e0e0;
+}
+
+/* === NOW PLAYING PANEL === */
+QFrame#nowPlayingPanel {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
+        stop:0 #0c0c0c, stop:0.5 #0f0f0f, stop:1 #0c0c0c);
+}
+
+QLabel#trackTitle {
+    color: #e8e8e8;
+    font-size: 20px;
+    font-weight: bold;
+    background: transparent;
+    padding: 4px;
+}
+
+QLabel#trackArtist {
+    color: #888888;
+    font-size: 14px;
+    background: transparent;
+    padding: 2px;
+}
+
+QLabel#timeLabel {
+    color: #666666;
+    font-size: 11px;
+    font-family: monospace;
+    background: transparent;
+}
+
+/* === SEEK SLIDER === */
+QSlider#seekSlider {
+    min-height: 20px;
+    background: transparent;
+}
+
+QSlider#seekSlider::groove:horizontal {
+    height: 4px;
+    background: #1e1e1e;
+    border-radius: 2px;
+}
+
+QSlider#seekSlider::sub-page:horizontal {
+    background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+        stop:0 #8b6914, stop:1 #d4a017);
+    border-radius: 2px;
+}
+
+QSlider#seekSlider::handle:horizontal {
+    width: 14px;
+    height: 14px;
+    margin: -5px 0;
+    background: #d4a017;
+    border: 2px solid #0a0a0a;
+    border-radius: 7px;
+}
+
+QSlider#seekSlider::handle:horizontal:hover {
+    background: #e8b420;
+    width: 16px;
+    height: 16px;
+    margin: -6px 0;
+    border-radius: 8px;
+}
+
+/* === CONTROL BAR === */
+QFrame#controlBar {
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+        stop:0 #111111, stop:1 #0a0a0a);
+    border-top: 1px solid #1e1e1e;
+}
+
+QPushButton#transportBtn {
+    background: transparent;
+    color: #999999;
+    border: 1px solid #2a2a2a;
+    border-radius: 4px;
+    font-size: 18px;
+    padding: 6px 12px;
+    min-width: 40px;
+}
+
+QPushButton#transportBtn:hover {
+    color: #d4a017;
+    border-color: #d4a017;
+    background: #1a1a1a;
+}
+
+QPushButton#transportBtn:pressed {
+    background: #222222;
+}
+
+QPushButton#playBtn {
+    background: #d4a017;
+    color: #0a0a0a;
+    border: none;
+    border-radius: 22px;
+    font-size: 20px;
+    padding: 0px;
+    min-width: 44px;
+    min-height: 44px;
+    max-width: 44px;
+    max-height: 44px;
+}
+
+QPushButton#playBtn:hover {
+    background: #e8b420;
+}
+
+QPushButton#playBtn:pressed {
+    background: #b8901a;
+}
+
+QPushButton#modeBtn {
+    background: transparent;
+    color: #666666;
+    border: 1px solid #222222;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 6px 10px;
+    min-width: 36px;
+}
+
+QPushButton#modeBtn:hover {
+    color: #999999;
+    border-color: #444444;
+    background: #151515;
+}
+
+QPushButton#modeBtn:checked {
+    color: #d4a017;
+    border-color: #d4a017;
+}
+
+QPushButton#smallButton {
+    background: transparent;
+    color: #666666;
+    border: 1px solid #2a2a2a;
+    border-radius: 3px;
+    font-size: 10px;
+    padding: 3px 8px;
+    letter-spacing: 1px;
+}
+
+QPushButton#smallButton:hover {
+    color: #d4a017;
+    border-color: #d4a017;
+}
+
+QLabel#miniTitle {
+    color: #888888;
+    font-size: 12px;
+    background: transparent;
+}
+
+QLabel#volIcon {
+    font-size: 16px;
+    background: transparent;
+    color: #666666;
+}
+
+/* === VOLUME SLIDER === */
+QSlider#volumeSlider {
+    min-height: 18px;
+    background: transparent;
+}
+
+QSlider#volumeSlider::groove:horizontal {
+    height: 3px;
+    background: #1e1e1e;
+    border-radius: 1px;
+}
+
+QSlider#volumeSlider::sub-page:horizontal {
+    background: #666666;
+    border-radius: 1px;
+}
+
+QSlider#volumeSlider::handle:horizontal {
+    width: 10px;
+    height: 10px;
+    margin: -4px 0;
+    background: #888888;
+    border: 1px solid #0a0a0a;
+    border-radius: 5px;
+}
+
+QSlider#volumeSlider::handle:horizontal:hover {
+    background: #d4a017;
+}
+
+/* === SCROLLBARS === */
+QScrollBar:vertical {
+    background: #0a0a0a;
+    width: 8px;
+    margin: 0px;
+    border: none;
+}
+
+QScrollBar::handle:vertical {
+    background: #2a2a2a;
+    min-height: 30px;
+    border-radius: 4px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #3a3a3a;
+}
+
+QScrollBar::add-line:vertical,
+QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QScrollBar::add-page:vertical,
+QScrollBar::sub-page:vertical {
+    background: none;
+}
+
+QScrollBar:horizontal {
+    height: 0px;
+}
+
+/* === INPUT DIALOGS === */
+QInputDialog {
+    background: #1a1a1a;
+}
+
+QInputDialog QLabel {
+    color: #c0c0c0;
+}
+
+QInputDialog QLineEdit {
+    background: #111111;
+    color: #e0e0e0;
+    border: 1px solid #333333;
+    border-radius: 3px;
+    padding: 5px;
+}
+
+QInputDialog QPushButton {
+    background: #222222;
+    color: #c0c0c0;
+    border: 1px solid #333333;
+    border-radius: 3px;
+    padding: 5px 15px;
+}
+
+QInputDialog QPushButton:hover {
+    background: #d4a017;
+    color: #0a0a0a;
+}
+
+/* === TOOLTIPS === */
+QToolTip {
+    background: #1a1a1a;
+    color: #d4a017;
+    border: 1px solid #333333;
+    padding: 4px;
+}
