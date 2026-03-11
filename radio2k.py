@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Radio2k — A dark, gothic-styled music player for FLAC files."""
+"""Radio2k"""
 
 import sys
 import os
