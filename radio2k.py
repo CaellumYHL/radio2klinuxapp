@@ -6,7 +6,7 @@ import os
 from PyQt6.QtWidgets import QApplication
 from PyQt6.QtGui import QFont
 from PyQt6.QtCore import Qt
-from ui import GothicPlayerWindow
+from ui import TokyoPlayerWindow
 
 def main():
     app = QApplication(sys.argv)
@@ -18,7 +18,7 @@ def main():
         with open(qss_path, "r") as f:
             app.setStyleSheet(f.read())
     
-    window = GothicPlayerWindow()
+    window = TokyoPlayerWindow()
     window.show()
     
     sys.exit(app.exec())

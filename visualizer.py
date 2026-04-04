@@ -37,11 +37,11 @@ class VisualizerWidget(QWidget):
         self._loaded_file = None
 
         # Colors
-        self._color_low = QColor(212, 160, 23)      # Amber
-        self._color_mid = QColor(232, 120, 20)       # Orange
-        self._color_high = QColor(200, 50, 50)       # Red
-        self._bg_color = QColor(8, 8, 8)
-        self._peak_color = QColor(212, 160, 23, 180)
+        self._color_low = QColor(6, 182, 212)      # Cyan
+        self._color_mid = QColor(139, 92, 246)       # Purple
+        self._color_high = QColor(217, 70, 239)       # Magenta
+        self._bg_color = QColor(15, 23, 42)
+        self._peak_color = QColor(6, 182, 212, 180)
 
     def load_audio(self, filepath: str):
         """Load audio samples from a file. Only call when visualizer is visible."""
@@ -174,7 +174,7 @@ class VisualizerWidget(QWidget):
 
             # Glow effect (subtle wider bar behind)
             if intensity > 0.3:
-                glow_color = QColor(212, 160, 23, int(40 * intensity))
+                glow_color = QColor(6, 182, 212, int(40 * intensity))
                 painter.setBrush(QBrush(glow_color))
                 painter.drawRoundedRect(
                     QRectF(x - 1, y + 2, bar_width + 2, bar_h - 2), 2, 2
@@ -213,10 +213,10 @@ class VisualizerWindow(QWidget):
 
     def __init__(self, player, parent=None):
         super().__init__(parent)
-        self.setWindowTitle("⛧ RADIO2K — Visualizer")
+        self.setWindowTitle("RADIO2K — Visualizer")
         self.setMinimumSize(700, 350)
         self.resize(800, 400)
-        self.setStyleSheet("background-color: #080808;")
+        self.setStyleSheet("background-color: #0f172a;")
 
         self._player = player
         self._loaded = False
@@ -226,15 +226,15 @@ class VisualizerWindow(QWidget):
         layout.setSpacing(0)
 
         # Header
-        header = QLabel("  ⛧ VISUALIZER")
+        header = QLabel("  VISUALIZER")
         header.setStyleSheet("""
-            color: #d4a017;
+            color: #06b6d4;
             font-size: 14px;
             font-weight: bold;
             letter-spacing: 2px;
             padding: 8px 12px;
-            background: #0c0c0c;
-            border-bottom: 1px solid #1a1a1a;
+            background: #1e293b;
+            border-bottom: 1px solid #334155;
         """)
         layout.addWidget(header)
 

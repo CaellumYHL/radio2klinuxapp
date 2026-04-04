@@ -7,7 +7,7 @@ from PyQt6.QtWidgets import (
     QPushButton, QSlider, QListWidget, QListWidgetItem, QSplitter,
     QFrame, QInputDialog, QMenu, QMessageBox, QSizePolicy,
     QGraphicsDropShadowEffect, QApplication, QStyleOptionSlider, QStyle,
-    QDialog, QTextEdit
+    QDialog, QTextEdit, QLineEdit
 )
 from PyQt6.QtGui import (
     QPixmap, QPainter, QColor, QFont, QFontDatabase, QIcon,
@@ -143,8 +143,8 @@ def extract_album_art(filepath: str) -> QPixmap | None:
     return None
 
 
-class GothicDivider(QFrame):
-    """A decorative gothic divider using the wing asset."""
+class NeonDivider(QFrame):
+    """A decorative divider."""
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setFixedHeight(40)
@@ -335,12 +335,12 @@ class TrackListWidget(QListWidget):
         menu.exec(self.mapToGlobal(pos))
 
 
-class GothicPlayerWindow(QMainWindow):
+class TokyoPlayerWindow(QMainWindow):
     """Main application window."""
     
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("⛧ RADIO2K ⛧")
+        self.setWindowTitle("RADIO2K")
         self.setMinimumSize(1000, 700)
         self.resize(1100, 750)
         
@@ -372,8 +372,8 @@ class GothicPlayerWindow(QMainWindow):
         header = self._build_header()
         main_layout.addWidget(header)
         
-        # === GOTHIC DIVIDER ===
-        self.divider = GothicDivider()
+        # === DIVIDER ===
+        self.divider = NeonDivider()
         main_layout.addWidget(self.divider)
         
         # === MAIN CONTENT (sidebar + now playing) ===
@@ -405,7 +405,7 @@ class GothicPlayerWindow(QMainWindow):
         layout.setContentsMargins(20, 10, 20, 10)
         
         # Title
-        title = QLabel("⛧ RADIO2K")
+        title = QLabel("RADIO2K")
         title.setObjectName("headerTitle")
         title.setFont(QFont("Serif", 22, QFont.Weight.Bold))
         layout.addWidget(title)
@@ -463,6 +463,25 @@ class GothicPlayerWindow(QMainWindow):
         self.track_list = TrackListWidget()
         self.track_list.setObjectName("trackList")
         layout.addWidget(self.track_list, 1)
+        
+        # Download section
+        dl_label = QLabel("DOWNLOAD YOUTUBE")
+        dl_label.setObjectName("sectionLabel")
+        layout.addWidget(dl_label)
+        
+        dl_layout = QHBoxLayout()
+        self.url_input = QLineEdit()
+        self.url_input.setObjectName("urlInput")
+        self.url_input.setPlaceholderText("Paste YouTube URL...")
+        dl_layout.addWidget(self.url_input)
+        
+        self.btn_download = QPushButton("↓")
+        self.btn_download.setObjectName("smallButton")
+        self.btn_download.setToolTip("Download MP3")
+        self.btn_download.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        dl_layout.addWidget(self.btn_download)
+        
+        layout.addLayout(dl_layout)
         
         return sidebar
     
@@ -636,8 +655,48 @@ class GothicPlayerWindow(QMainWindow):
         # Playlist list
         self.playlist_list.itemClicked.connect(self._on_playlist_clicked)
         self.playlist_list.customContextMenuRequested.connect(self._on_playlist_context_menu)
-        self.btn_new_playlist.clicked.connect(self._on_new_playlist)
+        # Download Event
+        self.btn_download.clicked.connect(self._on_download_clicked)
     
+    def _on_download_clicked(self):
+        url = self.url_input.text().strip()
+        if not url:
+            return
+            
+        from downloader import YTDownloaderThread
+        from playlist import MUSIC_DIR
+        
+        self.url_input.setEnabled(False)
+        self.btn_download.setEnabled(False)
+        self.btn_download.setText("⌛")
+        
+        self.dl_thread = YTDownloaderThread(url, MUSIC_DIR)
+        self.dl_thread.success.connect(self._on_download_success)
+        self.dl_thread.error.connect(self._on_download_error)
+        self.dl_thread.start()
+        
+    def _on_download_success(self):
+        self._reset_download_ui()
+        self.url_input.clear()
+        
+        # Refresh library and UI
+        tracks = self.playlist_mgr.scan_library()
+        self.track_list.set_tracks(tracks)
+        
+        current_track = self.playlist_mgr.get_current_track()
+        self.playlist_mgr.set_queue(tracks, self.playlist_mgr.queue_index if current_track else 0)
+        
+        QMessageBox.information(self, "Download Complete", "Track successfully downloaded and added to library!")
+        
+    def _on_download_error(self, err_msg):
+        self._reset_download_ui()
+        QMessageBox.warning(self, "Download Error", f"Failed to download:\n{err_msg}")
+        
+    def _reset_download_ui(self):
+        self.url_input.setEnabled(True)
+        self.btn_download.setEnabled(True)
+        self.btn_download.setText("↓")
+        
     def _load_data(self):
         """Scan library and load playlists."""
         tracks = self.playlist_mgr.scan_library()

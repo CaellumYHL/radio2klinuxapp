@@ -1,25 +1,30 @@
 /* =====================================================
+<<<<<<< HEAD
+=======
+   TOKYO NEON FLAC PLAYER — Qt Stylesheet
+   Midnight blue Tokyo theme with cyan/magenta accents
+>>>>>>> 4b3dc9e (added dlp support and java runtime)
    ===================================================== */
 
 /* === GLOBAL === */
 QWidget {
-    background-color: #0a0a0a;
-    color: #c0c0c0;
+    background-color: #0f172a;
+    color: #e2e8f0;
     font-family: "Serif";
     font-size: 13px;
-    selection-background-color: #d4a017;
-    selection-color: #0a0a0a;
+    selection-background-color: #06b6d4;
+    selection-color: #0f172a;
 }
 
 /* === HEADER === */
 QFrame#header {
     background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-        stop:0 #141414, stop:1 #0a0a0a);
-    border-bottom: 1px solid #1a1a1a;
+        stop:0 #1e293b, stop:1 #0f172a);
+    border-bottom: 1px solid #334155;
 }
 
 QLabel#headerTitle {
-    color: #d4a017;
+    color: #06b6d4;
     font-size: 24px;
     font-weight: bold;
     letter-spacing: 3px;
@@ -28,12 +33,12 @@ QLabel#headerTitle {
 
 /* === SIDEBAR === */
 QFrame#sidebar {
-    background: #0e0e0e;
-    border-right: 1px solid #1a1a1a;
+    background: #1e293b;
+    border-right: 1px solid #334155;
 }
 
 QLabel#sectionLabel {
-    color: #7a7a7a;
+    color: #94a3b8;
     font-size: 11px;
     font-weight: bold;
     letter-spacing: 2px;
@@ -43,35 +48,35 @@ QLabel#sectionLabel {
 
 /* === PLAYLIST LIST === */
 QListWidget#playlistList {
-    background: #111111;
-    border: 1px solid #1e1e1e;
+    background: #0f172a;
+    border: 1px solid #334155;
     border-radius: 4px;
     padding: 4px;
     outline: none;
 }
 
 QListWidget#playlistList::item {
-    color: #b0b0b0;
+    color: #cbd5e1;
     padding: 6px 8px;
     border-radius: 3px;
     margin: 1px 0px;
 }
 
 QListWidget#playlistList::item:selected {
-    background: #1a1a1a;
-    color: #d4a017;
-    border-left: 2px solid #d4a017;
+    background: #334155;
+    color: #06b6d4;
+    border-left: 2px solid #d946ef;
 }
 
 QListWidget#playlistList::item:hover {
-    background: #161616;
-    color: #e0e0e0;
+    background: #334155;
+    color: #f8fafc;
 }
 
 /* === TRACK LIST === */
 QListWidget#trackList {
-    background: #0c0c0c;
-    border: 1px solid #1a1a1a;
+    background: #0f172a;
+    border: 1px solid #334155;
     border-radius: 4px;
     padding: 2px;
     outline: none;
@@ -79,30 +84,30 @@ QListWidget#trackList {
 }
 
 QListWidget#trackList::item {
-    color: #b4b4b4;
+    color: #cbd5e1;
     padding: 8px 10px;
-    border-bottom: 1px solid #131313;
+    border-bottom: 1px solid #1e293b;
     border-radius: 0px;
 }
 
 QListWidget#trackList::item:selected {
-    background: #181818;
-    color: #d4a017;
+    background: #334155;
+    color: #06b6d4;
 }
 
 QListWidget#trackList::item:hover {
-    background: #141414;
-    color: #e0e0e0;
+    background: #1e293b;
+    color: #f8fafc;
 }
 
 /* === NOW PLAYING PANEL === */
 QFrame#nowPlayingPanel {
     background: qlineargradient(x1:0, y1:0, x2:1, y2:1,
-        stop:0 #0c0c0c, stop:0.5 #0f0f0f, stop:1 #0c0c0c);
+        stop:0 #0f172a, stop:0.5 #1e293b, stop:1 #0f172a);
 }
 
 QLabel#trackTitle {
-    color: #e8e8e8;
+    color: #f8fafc;
     font-size: 20px;
     font-weight: bold;
     background: transparent;
@@ -110,14 +115,14 @@ QLabel#trackTitle {
 }
 
 QLabel#trackArtist {
-    color: #888888;
+    color: #94a3b8;
     font-size: 14px;
     background: transparent;
     padding: 2px;
 }
 
 QLabel#timeLabel {
-    color: #666666;
+    color: #94a3b8;
     font-size: 11px;
     font-family: monospace;
     background: transparent;
@@ -131,13 +136,13 @@ QSlider#seekSlider {
 
 QSlider#seekSlider::groove:horizontal {
     height: 4px;
-    background: #1e1e1e;
+    background: #334155;
     border-radius: 2px;
 }
 
 QSlider#seekSlider::sub-page:horizontal {
     background: qlineargradient(x1:0, y1:0, x2:1, y2:0,
-        stop:0 #8b6914, stop:1 #d4a017);
+        stop:0 #d946ef, stop:1 #06b6d4);
     border-radius: 2px;
 }
 
@@ -145,13 +150,13 @@ QSlider#seekSlider::handle:horizontal {
     width: 14px;
     height: 14px;
     margin: -5px 0;
-    background: #d4a017;
-    border: 2px solid #0a0a0a;
+    background: #06b6d4;
+    border: 2px solid #0f172a;
     border-radius: 7px;
 }
 
 QSlider#seekSlider::handle:horizontal:hover {
-    background: #e8b420;
+    background: #22d3ee;
     width: 16px;
     height: 16px;
     margin: -6px 0;
@@ -161,14 +166,14 @@ QSlider#seekSlider::handle:horizontal:hover {
 /* === CONTROL BAR === */
 QFrame#controlBar {
     background: qlineargradient(x1:0, y1:0, x2:0, y2:1,
-        stop:0 #111111, stop:1 #0a0a0a);
-    border-top: 1px solid #1e1e1e;
+        stop:0 #1e293b, stop:1 #0f172a);
+    border-top: 1px solid #334155;
 }
 
 QPushButton#transportBtn {
     background: transparent;
-    color: #999999;
-    border: 1px solid #2a2a2a;
+    color: #94a3b8;
+    border: 1px solid #475569;
     border-radius: 4px;
     font-size: 18px;
     padding: 6px 12px;
@@ -176,18 +181,18 @@ QPushButton#transportBtn {
 }
 
 QPushButton#transportBtn:hover {
-    color: #d4a017;
-    border-color: #d4a017;
-    background: #1a1a1a;
+    color: #06b6d4;
+    border-color: #06b6d4;
+    background: #334155;
 }
 
 QPushButton#transportBtn:pressed {
-    background: #222222;
+    background: #475569;
 }
 
 QPushButton#playBtn {
-    background: #d4a017;
-    color: #0a0a0a;
+    background: #d946ef;
+    color: #0f172a;
     border: none;
     border-radius: 22px;
     font-size: 20px;
@@ -199,17 +204,17 @@ QPushButton#playBtn {
 }
 
 QPushButton#playBtn:hover {
-    background: #e8b420;
+    background: #e879f9;
 }
 
 QPushButton#playBtn:pressed {
-    background: #b8901a;
+    background: #c026d3;
 }
 
 QPushButton#modeBtn {
     background: transparent;
-    color: #666666;
-    border: 1px solid #222222;
+    color: #94a3b8;
+    border: 1px solid #475569;
     border-radius: 4px;
     font-size: 16px;
     padding: 6px 10px;
@@ -217,20 +222,20 @@ QPushButton#modeBtn {
 }
 
 QPushButton#modeBtn:hover {
-    color: #999999;
-    border-color: #444444;
-    background: #151515;
+    color: #cbd5e1;
+    border-color: #64748b;
+    background: #334155;
 }
 
 QPushButton#modeBtn:checked {
-    color: #d4a017;
-    border-color: #d4a017;
+    color: #06b6d4;
+    border-color: #06b6d4;
 }
 
 QPushButton#smallButton {
     background: transparent;
-    color: #666666;
-    border: 1px solid #2a2a2a;
+    color: #94a3b8;
+    border: 1px solid #475569;
     border-radius: 3px;
     font-size: 10px;
     padding: 3px 8px;
@@ -238,12 +243,12 @@ QPushButton#smallButton {
 }
 
 QPushButton#smallButton:hover {
-    color: #d4a017;
-    border-color: #d4a017;
+    color: #06b6d4;
+    border-color: #06b6d4;
 }
 
 QLabel#miniTitle {
-    color: #888888;
+    color: #94a3b8;
     font-size: 12px;
     background: transparent;
 }
@@ -251,7 +256,7 @@ QLabel#miniTitle {
 QLabel#volIcon {
     font-size: 16px;
     background: transparent;
-    color: #666666;
+    color: #94a3b8;
 }
 
 /* === VOLUME SLIDER === */
@@ -262,12 +267,12 @@ QSlider#volumeSlider {
 
 QSlider#volumeSlider::groove:horizontal {
     height: 3px;
-    background: #1e1e1e;
+    background: #334155;
     border-radius: 1px;
 }
 
 QSlider#volumeSlider::sub-page:horizontal {
-    background: #666666;
+    background: #94a3b8;
     border-radius: 1px;
 }
 
@@ -275,31 +280,31 @@ QSlider#volumeSlider::handle:horizontal {
     width: 10px;
     height: 10px;
     margin: -4px 0;
-    background: #888888;
-    border: 1px solid #0a0a0a;
+    background: #cbd5e1;
+    border: 1px solid #0f172a;
     border-radius: 5px;
 }
 
 QSlider#volumeSlider::handle:horizontal:hover {
-    background: #d4a017;
+    background: #06b6d4;
 }
 
 /* === SCROLLBARS === */
 QScrollBar:vertical {
-    background: #0a0a0a;
+    background: #0f172a;
     width: 8px;
     margin: 0px;
     border: none;
 }
 
 QScrollBar::handle:vertical {
-    background: #2a2a2a;
+    background: #475569;
     min-height: 30px;
     border-radius: 4px;
 }
 
 QScrollBar::handle:vertical:hover {
-    background: #3a3a3a;
+    background: #64748b;
 }
 
 QScrollBar::add-line:vertical,
@@ -318,38 +323,38 @@ QScrollBar:horizontal {
 
 /* === INPUT DIALOGS === */
 QInputDialog {
-    background: #1a1a1a;
+    background: #1e293b;
 }
 
 QInputDialog QLabel {
-    color: #c0c0c0;
+    color: #e2e8f0;
 }
 
-QInputDialog QLineEdit {
-    background: #111111;
-    color: #e0e0e0;
-    border: 1px solid #333333;
+QInputDialog QLineEdit, QLineEdit#urlInput {
+    background: #0f172a;
+    color: #f8fafc;
+    border: 1px solid #334155;
     border-radius: 3px;
     padding: 5px;
 }
 
 QInputDialog QPushButton {
-    background: #222222;
-    color: #c0c0c0;
-    border: 1px solid #333333;
+    background: #334155;
+    color: #e2e8f0;
+    border: 1px solid #475569;
     border-radius: 3px;
     padding: 5px 15px;
 }
 
 QInputDialog QPushButton:hover {
-    background: #d4a017;
-    color: #0a0a0a;
+    background: #06b6d4;
+    color: #0f172a;
 }
 
 /* === TOOLTIPS === */
 QToolTip {
-    background: #1a1a1a;
-    color: #d4a017;
-    border: 1px solid #333333;
+    background: #1e293b;
+    color: #06b6d4;
+    border: 1px solid #334155;
     padding: 4px;
 }
