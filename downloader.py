@@ -1,5 +1,8 @@
 import subprocess
 import os
+import sys
+import shutil
+import glob
 from PyQt6.QtCore import QThread, pyqtSignal
 
 class YTDownloaderThread(QThread):
@@ -14,17 +17,27 @@ class YTDownloaderThread(QThread):
 
     def run(self):
         try:
+            # yt-dlp's JS challenge solver requires Node.js v20+ (for --experimental-permission).
+            # Always prefer NVM-managed versions (which are newer) over the system node (may be v18).
+            nvm_versions = glob.glob(os.path.expanduser("~/.nvm/versions/node/*/bin/node"))
+            if nvm_versions:
+                # Sort by version number and take the latest
+                node_path = sorted(nvm_versions, key=lambda p: [int(x) for x in p.split("/node/v")[1].split("/")[0].split(".")])[-1]
+            else:
+                node_path = shutil.which("node")
+
             # -f bestaudio -x --audio-format mp3 --audio-quality 0 --embed-thumbnail --add-metadata
             # Also output file naming template: -o "{output_dir}/%(title)s.%(ext)s"
             command = [
-                "yt-dlp",
+                # Use the venv's yt-dlp, not whatever is on PATH
+                os.path.join(os.path.dirname(sys.executable), "yt-dlp"),
                 "-f", "bestaudio",
                 "-x",
                 "--audio-format", "mp3",
                 "--audio-quality", "0",
                 "--embed-thumbnail",
                 "--add-metadata",
-                "--js-runtimes", "node",
+                "--js-runtimes", f"node:{node_path}" if node_path else "node",
                 "--remote-components", "ejs:github",
                 "--cookies-from-browser", "firefox",
                 "-o", os.path.join(self.output_dir, "%(title)s.%(ext)s"),
