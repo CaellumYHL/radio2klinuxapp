@@ -25,6 +25,7 @@ class YTDownloaderThread(QThread):
                 "--embed-thumbnail",
                 "--add-metadata",
                 "--js-runtimes", "node",
+                "--remote-components", "ejs:github",
                 "--cookies-from-browser", "firefox",
                 "-o", os.path.join(self.output_dir, "%(title)s.%(ext)s"),
                 self.url
